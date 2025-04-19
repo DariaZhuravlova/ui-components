@@ -1,0 +1,51 @@
+.tabs {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+
+  &.withPadding {
+    padding-left: 24px;
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  &.spaceHug .tabsHeader {
+    justify-content: flex-start;
+  }
+
+  &.spaceStretch .tabsHeader {
+    justify-content: space-between;
+  }
+
+
+
+  &.scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE/Edge
+  }
+
+  &.scrollable::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.arrows {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &.dropdown {
+    overflow: hidden;
+    justify-content: space-between;
+  }
+}
+
+
+.tabContent {
+  padding: 50px 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+}

@@ -1,0 +1,98 @@
+$color-user-name: #1A1A1E;
+$color-user-email: #51525C;
+
+$color-bg-user-card-fill: #FAFAFA;
+
+$color-focus-outline-user-card-fill: #2E90FA3D;
+
+.userCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  padding: 12px 16px;
+  border-radius: 8px;
+  width: fit-content;
+
+  &.none:focus-visible .avatarWrapper,
+  &.none:focus-within .avatarWrapper,
+  &.none:focus .avatarWrapper {
+    outline: 4px solid $color-focus-outline-user-card-fill;
+  }
+
+  &.fill {
+    background-color: $color-bg-user-card-fill;
+  }
+
+  &.fill:focus-visible,
+  &.fill:focus-within {
+    outline: 4px solid $color-focus-outline-user-card-fill;
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  &.size32 {
+    .userName {
+      font-size: 14;
+    }
+
+    .userEmail {
+      font-size: 12px;
+    }
+  }
+
+  &.size40 {
+    .userName {
+      font-size: 14;
+    }
+
+    .userEmail {
+      font-size: 12px;
+    }
+  }
+
+  &.size48 {
+    .userName {
+      font-size: 16px;
+    }
+
+    .userEmail {
+      font-size: 16px;
+    }
+  }
+
+  &.size56 {
+    .userName {
+      font-size: 18px;
+    }
+
+    .userEmail {
+      font-size: 16px;
+    }
+  }
+}
+
+
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  color: $color-user-name;
+}
+
+.userEmail {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: $color-user-email;
+}

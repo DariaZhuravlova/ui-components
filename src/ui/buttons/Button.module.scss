@@ -1,0 +1,709 @@
+$color-accent: #2563eb;
+$color-accent-hover: #175cd3;
+$color-accent-active: #1849a9;
+$color-accent-focus: #175cd3;
+$color-accent-outline: #2e90fa26;
+
+$color-primary: #26272B;
+$color-primary-hover: #3F3F46;
+$color-primary-active: #1A1A1E;
+$color-primary-focus: #3F3F46;
+$color-primary-outline: #26272B33;
+
+$color-secondary: #F2F2F2;
+$color-secondary-hover: #E4E4E7;
+$color-secondary-active: #D1D1D6;
+$color-secondary-focus: #E4E4E7;
+$color-secondary-outline: #98A2B333;
+
+$color-success: #079455;
+$color-success-hover: #067647;
+$color-success-active: #085D3A;
+$color-success-focus: #067647;
+$color-success-outline: #07945533;
+
+$color-danger: #D92D20;
+$color-danger-hover: #B42318;
+$color-danger-active: #912018;
+$color-danger-focus: #B42318;
+$color-danger-outline: #F044383D;
+
+$color-warning: #DC6803;
+$color-warning-hover: #B54708;
+$color-warning-active: #93370D;
+$color-warning-focus: #B54708;
+$color-warning-outline: #F7900933;
+
+$color-white: #FFFFFF;
+$color-black: $color-primary-active;
+$color-gray: #51525C;
+$color-light-gray: #D1D1D6;
+
+.button {
+  max-width: 152px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:disabled {
+    background-color: $color-secondary;
+    color: $color-light-gray;
+    cursor: not-allowed;
+  }
+
+  &.loading {
+    cursor: progress;
+  }
+}
+
+.loadingIcon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot {
+  width: 3.33px;
+  height: 3.33px;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: blink 1.5s infinite ease-in-out;
+
+  &.dotFade {
+    opacity: 0.4;
+    animation-delay: 1s;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.shapeRectangle {
+  border-radius: 0px;
+}
+
+.shapeRounded {
+  border-radius: 4px;
+}
+
+.shapePill {
+  border-radius: 9999px;
+}
+
+.size32 {
+  font-size: 12px;
+  padding: 8px 14px;
+  line-height: 16px;
+  height: 32px;
+}
+
+.size36 {
+  font-size: 13px;
+  padding: 8px 14px;
+  line-height: 20px;
+  height: 36px;
+}
+
+.size40 {
+  font-size: 14px;
+  padding: 8px 14px;
+  line-height: 24px;
+  height: 40px;
+}
+
+.size44 {
+  font-size: 14px;
+  padding: 10px 14px;
+  line-height: 24px;
+  height: 44px;
+}
+
+.size48 {
+  font-size: 14px;
+  padding: 12px 18px;
+  line-height: 24px;
+  height: 48px;
+}
+
+.size56 {
+  font-size: 14px;
+  padding: 16px 22px;
+  line-height: 24px;
+  height: 56px;
+}
+
+.fillAccent {
+  color: $color-white;
+  background-color: $color-accent;
+
+  &:hover {
+    background-color: $color-accent-hover;
+  }
+
+  &:active {
+    background-color: $color-accent-active;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $color-accent-focus;
+    outline: 4px solid $color-accent-outline;
+  }
+
+}
+
+.fillPrimary {
+  color: $color-white;
+  background-color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+
+  &:active {
+    background-color: $color-primary-active;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $color-primary-focus;
+    outline: 4px solid $color-primary-outline;
+  }
+
+}
+
+.fillSecondary {
+  color: $color-primary;
+  background-color: $color-secondary;
+
+  &:hover {
+    background-color: $color-secondary-hover;
+  }
+
+  &:active {
+    background-color: $color-light-gray;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $color-secondary-active;
+    outline: 4px solid $color-secondary-outline;
+  }
+
+}
+
+.fillSuccess {
+  color: $color-white;
+  background-color: $color-success;
+
+  &:hover {
+    background-color: $color-success-hover;
+  }
+
+  &:active {
+    background-color: $color-success-active;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $color-success-focus;
+    outline: 4px solid $color-success-outline;
+  }
+
+}
+
+.fillDanger {
+  color: $color-white;
+  background-color: $color-danger;
+
+  &:hover {
+    background-color: $color-danger-hover;
+  }
+
+  &:active {
+    background-color: $color-danger-active;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $color-danger-focus;
+    outline: 4px solid $color-danger-outline;
+  }
+
+}
+
+.fillWarning {
+  color: $color-white;
+  background-color: $color-warning;
+
+  &:hover {
+    background-color: $color-warning-hover;
+  }
+
+  &:active {
+    background-color: $color-warning-active;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $color-warning-focus;
+    outline: 4px solid $color-warning-outline;
+  }
+
+}
+
+// outline button
+
+.outlineAccent {
+  color: #1570EF;
+  background-color: $color-white;
+  border: 1px solid #84CAFF;
+
+  &:hover {
+    background-color: #EFF8FF;
+  }
+
+  &:active {
+    background-color: #D1E9FF;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #EFF8FF;
+    outline: 4px solid #2E90FA26;
+  }
+
+  &:disabled {
+    border-color: $color-light-gray;
+  }
+
+}
+
+.outlinePrimary {
+  color: $color-black;
+  background-color: $color-white;
+  border: 1px solid #26272B;
+
+  &:hover {
+    background-color: #FAFAFA;
+  }
+
+  &:active {
+    background-color: #F2F2F2;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #FAFAFA;
+    outline: 4px solid #26272B33;
+  }
+
+  &:disabled {
+    border-color: $color-light-gray;
+  }
+
+}
+
+.outlineSecondary {
+  color: #51525C;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D1D6;
+
+  &:hover {
+    background-color: #FAFAFA;
+    color: #26272B;
+  }
+
+  &:active {
+    background-color: #F2F2F2;
+    color: #26272B;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #FAFAFA;
+    color: #26272B;
+    outline: 4px solid #98A2B333;
+  }
+
+  &:disabled {
+    border-color: $color-light-gray;
+  }
+
+}
+
+.outlineSuccess {
+  color: #079455;
+  background-color: #FFFFFF;
+  border: 1px solid #75E0A7;
+
+  &:hover {
+    background-color: #ECFDF3;
+    color: #067647;
+  }
+
+  &:active {
+    background-color: #DCFAE6;
+    color: #085D3A;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #ECFDF3;
+    color: #067647;
+    outline: 4px solid #07945533;
+  }
+
+  &:disabled {
+    border-color: $color-light-gray;
+  }
+
+}
+
+.outlineDanger {
+  color: #D92D20;
+  background-color: #FFFFFF;
+  border: 1px solid #FDA29B;
+
+  &:hover {
+    background-color: #FEF3F2;
+    color: #B42318;
+  }
+
+  &:active {
+    background-color: #FEE4E2;
+    color: #912018;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #FEF3F2;
+    outline: 4px solid #F044383D;
+    color: #B42318;
+  }
+
+  &:disabled {
+    border-color: $color-light-gray;
+  }
+
+}
+
+.outlineWarning {
+  color: #DC6803;
+  background-color: #FFFFFF;
+  border: 1px solid #FEC84B;
+
+  &:hover {
+    background-color: #FFFAEB;
+    color: #B54708;
+  }
+
+  &:active {
+    background-color: #FEF0C7;
+    color: #93370D;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #FFFAEB;
+    outline: 4px solid #F044383D;
+    color: #B54708;
+  }
+
+  &:disabled {
+    border-color: $color-light-gray;
+  }
+
+}
+
+// ghost button
+
+.ghostAccent {
+  color: #175CD3;
+  background-color: transparent;
+
+  &:hover {
+    background-color: #EFF8FF;
+    color: #1849A9;
+  }
+
+  &:active {
+    background-color: #D1E9FF;
+    color: #1849A9;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #EFF8FF;
+    outline: 4px solid #2E90FA26;
+    color: $color-primary-active;
+  }
+
+}
+
+.ghostPrimary {
+  color: $color-primary-active;
+  background-color: transparent;
+
+  &:hover {
+    background-color: #26272B;
+    color: #FCFCFC;
+  }
+
+  &:active {
+    background-color: $color-primary-active;
+    color: #FCFCFC;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #26272B;
+    outline: 4px solid #26272B33;
+    color: #FCFCFC;
+  }
+
+}
+
+.ghostSecondary {
+  color: $color-primary-active;
+  background-color: transparent;
+
+  &:hover {
+    background-color: #F2F2F2;
+    color: #26272B;
+  }
+
+  &:active {
+    background-color: #E4E4E7;
+    color: #26272B;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #F2F2F2;
+    outline: 4px solid #98A2B333;
+    color: #26272B;
+  }
+
+}
+
+.ghostSuccess {
+  color: #074D31;
+  background-color: transparent;
+
+  &:hover {
+    background-color: #ECFDF3;
+    color: #067647;
+  }
+
+  &:active {
+    background-color: #DCFAE6;
+    color: #067647;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #ECFDF3;
+    outline: 4px solid #07945533;
+    color: #067647;
+  }
+
+}
+
+.ghostDanger {
+  color: #B42318;
+  background-color: transparent;
+
+  &:hover {
+    background-color: #FEF3F2;
+    color: #912018;
+  }
+
+  &:active {
+    background-color: #FEF3F2;
+    color: #912018;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #FEF3F2;
+    outline: 4px solid #F044383D;
+    color: #912018;
+  }
+
+}
+
+.ghostWarning {
+  color: #B54708;
+  background-color: transparent;
+
+  &:hover {
+    background-color: #FFFAEB;
+    color: #93370D;
+  }
+
+  &:active {
+    background-color: #FFFAEB;
+    color: #93370D;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: #FFFAEB;
+    outline: 4px solid #F7900933;
+    color: #93370D;
+  }
+
+}
+
+// text button
+
+.textAccent {
+  color: #1570EF;
+  background-color: transparent;
+
+  &:hover {
+    color: #175CD3;
+  }
+
+  &:active {
+    color: #1849A9;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px solid #2E90FA26;
+    color: #175CD3;
+  }
+
+}
+
+.textPrimary {
+  color: $color-primary-active;
+  background-color: transparent;
+
+  &:hover {
+    color: #70707B;
+  }
+
+  &:active {
+    color: #51525C;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px solid #26272B33;
+    color: #70707B;
+  }
+
+}
+
+.textSecondary {
+  color: #70707B;
+  background-color: transparent;
+
+  &:hover {
+    color: #51525C;
+  }
+
+  &:active {
+    color: #3F3F46;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px solid #98A2B333;
+    color: #51525C;
+  }
+
+}
+
+.textSuccess {
+  color: #079455;
+  background-color: transparent;
+
+  &:hover {
+    color: #067647;
+  }
+
+  &:active {
+    color: #085D3A;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px solid #07945533;
+    color: #067647;
+  }
+
+}
+
+.textDanger {
+  color: #D92D20;
+  background-color: transparent;
+
+  &:hover {
+    color: #B42318;
+  }
+
+  &:active {
+    color: #912018;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px solid #F044383D;
+    color: #B42318;
+  }
+
+}
+
+.textWarning {
+  color: #DC6803;
+  background-color: transparent;
+
+  &:hover {
+    color: #B54708;
+  }
+
+  &:active {
+    color: #93370D;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px solid #F7900933;
+    color: #B54708;
+  }
+
+}

@@ -1,0 +1,36 @@
+$color-scrollbar: #E4E4E7;
+$color-border: #D1D1D6;
+
+.dropdown {
+  width: 100%;
+  background: white;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  padding: 4px 0;
+  box-shadow: 0px 4px 12px #10182808;
+  z-index: 10;
+
+  max-height: 200px;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: $color-scrollbar transparent;
+
+  // Chrome, Safari, Edge
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-scrollbar;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $color-scrollbar transparent;
+}

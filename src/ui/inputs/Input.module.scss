@@ -1,0 +1,236 @@
+$color-border-input-container: #d1d1d1;
+$color-helper-text: #51525C;
+$color-label-text: #1A1A1E;
+
+$color-input-focus-border: #84CAFF;
+$color-input-focus-outline: #2E90FA3D;
+
+$color-input-error-border: #FDA29B;
+$color-input-error-outline: #F044383D;
+
+$color-label-text-disabled: #70707B;
+$color-input-border-disabled: #D1D1D6;
+$color-helper-text-disabled: #D1D1D6;
+$color-placeholder-disabled: #D1D1D6;
+$color-icon-disabled: #D1D1D6;
+
+$color-badge-border: #E4E4E7;
+$color-badge-text: #3F3F46;
+$color-badge-background: #FAFAFA;
+
+$color-icon: #A0A0AB;
+
+$color-icon-error: #D92D20;
+$color-helper-text-error: #D92D20;
+
+$color-bg-input-fill: #FFFFFF;
+
+.inputWrapper {
+  font-family: 'Inter', sans-serif;
+  min-width: 245px;
+  // max-width: 323px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  &.labelRight {
+
+    .inputBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      // max-width: 245px;
+
+      .inputContainer {
+        min-width: 64px;
+        max-width: 64px;
+      }
+
+      input {
+        width: 100%;
+      }
+    }
+
+  }
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  // width: 100%;
+  min-width: 323px;
+  flex-wrap: wrap;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  padding: 0px 12px;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid $color-border-input-container;
+  background-color: $color-bg-input-fill;
+  min-width: 100%;
+
+  input {
+    background-color: transparent;
+    flex-grow: 1;
+    width: 100%;
+    min-width: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &:focus-within {
+    border-color: $color-input-focus-border;
+    outline: 4px solid $color-input-focus-outline;
+  }
+
+  .inputWrapper.labelRight {
+    &.hideFocus {
+      .inputContainer:focus-within {
+        border-color: inherit;
+        outline: none;
+      }
+    }
+  }
+
+  &.fill {
+    background-color: $color-bg-input-fill;
+    border: 1px solid $color-border-input-container;
+  }
+
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $color-border-input-container;
+  }
+
+  &.quiet {
+    border-color: transparent;
+
+    &:hover {
+      border: 1px solid $color-border-input-container;
+    }
+  }
+}
+
+.icon {
+  color: $color-icon;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.size24 {
+  height: 24px;
+  font-size: 12px;
+}
+
+.size32 {
+  height: 32px;
+  font-size: 12px;
+}
+
+.size36 {
+  height: 36px;
+  font-size: 12px;
+}
+
+.size40 {
+  min-height: 40px;
+  font-size: 14px;
+}
+
+.size48 {
+  height: 48px;
+  font-size: 14px;
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: $color-label-text;
+}
+
+.helperText {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: $color-helper-text;
+}
+
+.badge {
+  border: 1px solid $color-badge-border;
+  border-radius: 4px;
+  // width: 32px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-badge-text;
+  background: $color-badge-background;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.inputWrapper {
+  &.error {
+    .inputContainer {
+      border-color: $color-input-error-border;
+
+      &:focus-within {
+        outline: 4px solid $color-input-error-outline;
+      }
+    }
+
+    .icon {
+      color: $color-icon-error;
+    }
+
+    .helperText {
+      color: $color-helper-text-error;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    
+
+    .inputContainer {
+      border-color: $color-input-border-disabled;
+      outline: none;
+    }
+
+    .label {
+      color: $color-label-text-disabled;
+    }
+
+    .helperText {
+      color: $color-helper-text-disabled;
+    }
+
+    .placeholder {
+      color: $color-placeholder-disabled;
+    }
+
+    .icon {
+      color: $color-icon-disabled;
+    }
+  }
+}
+
+.required {
+  color: $color-icon-error;
+}

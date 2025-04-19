@@ -1,0 +1,52 @@
+.selectContainer {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  max-width: 323px;
+  gap: 4px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+input[readonly] {
+  cursor: pointer;
+}
+
+.dropdownWrapper {
+  position: absolute;
+  top: calc(100% - 20px);
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.rightIcons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.clearIcon, .arrowIcon {
+  cursor: pointer;
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+}
+
+.selectPickedWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 0; 
+}
+
+
+

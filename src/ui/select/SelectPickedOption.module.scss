@@ -1,0 +1,53 @@
+$color-background-selected-tag: #FAFAFA;
+
+.selectedTagsContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 2px;
+  padding: 2px 4px;
+  max-width: 100%;
+  width: fit-content;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  // max-width: 400px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.selectedTag {
+  background: #f2f4f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  padding: 4px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  color: #333;
+  white-space: nowrap;
+  transition: background 0.2s ease, border 0.2s ease;
+
+  &:hover {
+    background: #eaecef;
+    border-color: #ccc;
+  }
+}
+
+.removeTag {
+  margin-left: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+

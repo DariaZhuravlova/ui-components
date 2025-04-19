@@ -1,0 +1,97 @@
+$color-disabled: #D1D1D6;
+$color-active-underline: #1570EF;
+$color-background-active: #EFF8FF;
+$color-tab-label: #1A1A1E;
+$color-active-text: #175CD3;
+
+$color-badge-background: #FAFAFA;
+$color-badge-border: #E4E4E7;
+$color-badge-text: #3F3F46;
+$color-badge-background-selected: #EFF8FF;
+$color-badge-border-selected: #B2DDFF;
+$color-badge-text-selected: #175CD3;
+
+
+.tabButton {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  font-weight: 600;
+  color: $color-tab-label;
+  transition: all 0.2s ease;
+
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $color-disabled;
+  }
+
+  &.active {
+    color: $color-active-text;
+  }
+
+  &.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $color-active-underline; // blue line
+    border-radius: 1px;
+  }
+
+  &.underlineFilled {
+    background-color: $color-background-active;
+  }
+}
+
+
+
+.size32 {
+  height: 32px;
+  padding: 6px 8px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.size36 {
+  height: 36px;
+  padding: 6px 8px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.size40 {
+  height: 40px;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.tabLabel {
+  display: inline-block;
+}
+
+.tabBadge {
+  background-color: $color-badge-background;
+  border: 1px solid $color-badge-border;
+  color: $color-badge-text;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 0px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+  transition: all 0.2s ease;
+
+  &.active {
+    background-color: $color-badge-background-selected;
+    color: $color-badge-text-selected;
+    border-color: $color-badge-border-selected;
+  }
+}
