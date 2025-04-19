@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 import clsx from "clsx";
 import {tabsContent} from "../../mock/tabsContent";
 import {TabsItemList} from "./TabsItemList";
