@@ -1,31 +1,31 @@
 export const optionsData = [
   {
-    value: "midnight-blue",
+    // value: "midnight-blue",
     label: "Midnight Blue",
     icon: "🌌",
   },
   {
-    value: "crimson-sky",
+    // value: "crimson-sky",
     label: "Crimson Sky",
     icon: "🌅",
   },
   {
-    value: "electric-lime",
+    // value: "electric-lime",
     label: "Electric Lime",
     icon: "🍋",
   },
   {
-    value: "golden-sun",
+    // value: "golden-sun",
     label: "Golden Sun",
     icon: "🌞",
   },
   {
-    value: "sapphire-sea",
+    // value: "sapphire-sea",
     label: "Sapphire Sea",
     icon: "🌊",
   },
   {
-    value: "ruby-rose",
+    // value: "ruby-rose",
     label: "Ruby Rose",
     icon: "🌹",
   },
