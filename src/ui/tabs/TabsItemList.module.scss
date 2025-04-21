@@ -30,7 +30,7 @@ $underline-color: #D1D1D6;
   align-items: center;
   justify-content: center;
   width: 40px;
-  height: 100%;
+  height: 40px;
   background: none;
   border: none;
   cursor: pointer;
@@ -51,7 +51,7 @@ $underline-color: #D1D1D6;
 .dropdownContainer {
   min-width: 160px;
   position: absolute;
-  top: calc(100% + 16px);
+  top: calc(100% + 8px);
   right: 0px;
   z-index: 100;
 }

@@ -4,7 +4,7 @@ import "./App.css";
 // import {InputList} from "./ui/inputs/InputList";
 // import { AvatarWithInfoList } from "./ui/avatars/AvatarWithInfoList";
 // import { VerificationCodeInputList } from "./ui/verificationCodeInput/VerificationCodeInputList";
-// import {SelectList} from "./ui/select/SelectList";
+import {SelectList} from "./ui/select/SelectList";
 import {TabsList} from "./ui/tabs/TabsList";
 
 function App() {
@@ -15,8 +15,9 @@ function App() {
             {/* <AvatarList /> */}
             {/* <AvatarWithInfoList /> */}
             {/* <VerificationCodeInputList /> */}
-            {/* <SelectList /> */}
+
             <TabsList />
+            <SelectList />
         </>
     );
 }
