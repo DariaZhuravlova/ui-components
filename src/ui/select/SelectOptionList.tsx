@@ -10,6 +10,7 @@ interface Props {
     selected: OptionType[];
     isShowIcons?: boolean;
     onChange: (selected: OptionType[]) => void;
+    onClose?: () => void;
     searchText?: string;
 }
 
@@ -20,6 +21,7 @@ export const SelectOptionList: FC<Props> = ({
     selected,
     isShowIcons,
     onChange,
+    onClose,
     searchText = "",
 }) => {
     const filteredOptions = useMemo(() => {
@@ -42,6 +44,10 @@ export const SelectOptionList: FC<Props> = ({
     const handleSelect = (value: OptionType) => {
         const updated = isMulti ? handleMultiSelect(value) : handleSingleSelect(value);
         onChange(updated);
+
+        if (!isMulti && onClose) {
+            onClose();
+        }
     };
 
     return (

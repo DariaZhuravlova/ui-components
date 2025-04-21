@@ -104,6 +104,7 @@ export const Select: FC<SelectProps> = ({
 
   const handleClearAll = () => {
     setSelected([]);
+    setSearchText("");
   };
 
   const handleRemove = (value: OptionType) => {
@@ -112,10 +113,12 @@ export const Select: FC<SelectProps> = ({
   };
 
   const handleMultiChange = (newValues: OptionType[]) => {
-      const unique = newValues.filter(
-          (val, index, self) => index === self.findIndex((v) => v.label === val.label)
-      );
-      setSelected(unique);
+      setSelected(newValues);
+      if (!isMultiSelect && newValues.length > 0) {
+          setSearchText(newValues[0].label); 
+      } else {
+          setSearchText(""); 
+      }
   };
 
 
@@ -127,23 +130,25 @@ export const Select: FC<SelectProps> = ({
   };
 
   const iconAfterNode = (
-    <div onClick={iconAfterClickHandler} className={styles.rightIcons}>
-      {selected.length > 0 && isClearable && (
-        <img
-          src={clear}
-          alt="clear"
-          onClick={handleClearAll}
-          className={clsx(styles.clearIcon)}
-        />
-      )}
-      <img src={arrowDown} alt="arrow" className={clsx(styles.arrowIcon)} />
-    </div>
+      <div
+          onClick={iconAfterClickHandler}
+          className={styles.rightIcons}
+      >
+          {(searchText.length > 0 || selected.length > 0) && isClearable && (
+              <img
+                  src={clear}
+                  alt="clear"
+                  onClick={handleClearAll}
+                  className={clsx(styles.clearIcon)}
+              />
+          )}
+          <img
+              src={arrowDown}
+              alt="arrow"
+              className={clsx(styles.arrowIcon)}
+          />
+      </div>
   );
-
-  const inputValue =
-    selected.length > 0 && !isMultiSelect
-      ? optionsData.find((o) => o.label === selected[0].label)?.label || ""
-      : searchText;
 
   return (
       <div
@@ -167,7 +172,7 @@ export const Select: FC<SelectProps> = ({
                   disabled={disabled}
                   helperText={helperText}
                   tooltipText={tooltipText}
-                  value={!isMultiSelect ? inputValue : undefined}
+                  value={searchText}
                   readOnly={!isSearchable}
               >
                   {isMultiSelect && (
@@ -196,6 +201,7 @@ export const Select: FC<SelectProps> = ({
                           onChange={handleMultiChange}
                           isShowIcons={isShowIcons}
                           searchText={searchText}
+                          onClose={() => setIsOpen(false)}
                       />
                   </Dropdown>
               </div>
