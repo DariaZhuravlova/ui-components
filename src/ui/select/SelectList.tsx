@@ -32,7 +32,7 @@ export const SelectList = () => {
               optionsData={optionsData}
               isSearchable
               selected={selected1}
-              // @ts-expected-error type
+              // @ts-ignore
               setSelected={setSelected1}
               helperText="This is a hint text to help user."
               tooltipText="This is a tooltip"
@@ -56,7 +56,7 @@ export const SelectList = () => {
               placeholder="Pick some..."
               optionsData={optionsData}
               selected={selected2}
-              // @ts-expected-error type
+              // @ts-ignore
               setSelected={setSelected2}
               helperText="Helper text"
               isShowIcons={true}
@@ -78,7 +78,7 @@ export const SelectList = () => {
               placeholder="Placeholder..."
               optionsData={optionsData}
               selected={selected3}
-              //@ts-expected-error type
+              // @ts-ignore
               setSelected={setSelected3}
           />
 
@@ -89,7 +89,7 @@ export const SelectList = () => {
               placeholder="Select..."
               optionsData={optionsData}
               selected={selected4}
-              // @ts-expected-error type
+              // @ts-ignore
               setSelected={setSelected4}
               helperText="This is a hint text to help user."
               tooltipText="This is a tooltip"
@@ -109,7 +109,7 @@ export const SelectList = () => {
               placeholder="Select..."
               optionsData={optionsData}
               selected={selected5}
-              // @ts-expected-error type
+              // @ts-ignore
               setSelected={setSelected5}
               helperText="This is a hint text to help user."
               tooltipText="This is a tooltip"
