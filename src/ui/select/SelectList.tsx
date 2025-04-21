@@ -15,89 +15,114 @@ export const SelectList = () => {
   console.log(selected2);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "50px",
-        backgroundColor: "#F4F5F7",
-        padding: "50px",
-      }}
-    >
-      <Select
-        label="Choose a color"
-        isClearable
-        size="36"
-        placeholder="Select..."
-        optionsData={optionsData}
-        isSearchable
-        selected={selected1}
-        setSelected={setSelected1}
-        helperText="This is a hint text to help user."
-        tooltipText="This is a tooltip"
-        isShowTooltip
-        isShowIcons={true}
-        iconBefore={<img src={user} alt="user" />}
-      />
+      <div
+          style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "50px",
+              backgroundColor: "#F4F5F7",
+              padding: "50px",
+          }}
+      >
+          <Select
+              label="Choose a color"
+              isClearable
+              size="36"
+              placeholder="Select..."
+              optionsData={optionsData}
+              isSearchable
+              selected={selected1}
+              // @ts-expected-error type
+              setSelected={setSelected1}
+              helperText="This is a hint text to help user."
+              tooltipText="This is a tooltip"
+              isShowTooltip
+              isShowIcons={true}
+              iconBefore={
+                  <img
+                      src={user}
+                      alt="user"
+                  />
+              }
+          />
 
-      <Select
-        label="Multiple colors"
-        isClearable
-        isSearchable
-        isMultiSelect
-        size="40"
-        isQuiet
-        placeholder="Pick some..."
-        optionsData={optionsData}
-        selected={selected2}
-        setSelected={setSelected2}
-        helperText="Helper text"
-        isShowIcons={true}
-        iconBefore={<img src={search} alt="user" />}
-      />
-      <Select
-        label="With error"
-        isClearable
-        isSearchable
-        isError
-        helperText="Something went wrong"
-        uiType="outline"
-        size="48"
-        placeholder="Placeholder..."
-        optionsData={optionsData}
-        selected={selected3}
-        setSelected={setSelected3}
-      />
+          <Select
+              label="Multiple colors"
+              isClearable
+              isSearchable
+              isMultiSelect
+              size="40"
+              isQuiet
+              placeholder="Pick some..."
+              optionsData={optionsData}
+              selected={selected2}
+              // @ts-expected-error type
+              setSelected={setSelected2}
+              helperText="Helper text"
+              isShowIcons={true}
+              iconBefore={
+                  <img
+                      src={search}
+                      alt="user"
+                  />
+              }
+          />
+          <Select
+              label="With error"
+              isClearable
+              isSearchable
+              isError
+              helperText="Something went wrong"
+              uiType="outline"
+              size="48"
+              placeholder="Placeholder..."
+              optionsData={optionsData}
+              selected={selected3}
+              //@ts-expected-error type
+              setSelected={setSelected3}
+          />
 
-      <Select
-        label="not searchable"
-        isClearable
-        size="36"
-        placeholder="Select..."
-        optionsData={optionsData}
-        selected={selected4}
-        setSelected={setSelected4}
-        helperText="This is a hint text to help user."
-        tooltipText="This is a tooltip"
-        isShowTooltip
-        uiType={"outline"}
-        iconBefore={<img src={user} alt="user" />}
-      />
-      <Select
-        label="disabled"
-        isClearable
-        size="36"
-        placeholder="Select..."
-        optionsData={optionsData}
-        selected={selected5}
-        setSelected={setSelected5}
-        helperText="This is a hint text to help user."
-        tooltipText="This is a tooltip"
-        isShowTooltip
-        iconBefore={<img src={user} alt="user" />}
-        isQuiet
-        disabled={true}
-      />
-    </div>
+          <Select
+              label="not searchable"
+              isClearable
+              size="36"
+              placeholder="Select..."
+              optionsData={optionsData}
+              selected={selected4}
+              // @ts-expected-error type
+              setSelected={setSelected4}
+              helperText="This is a hint text to help user."
+              tooltipText="This is a tooltip"
+              isShowTooltip
+              uiType={"outline"}
+              iconBefore={
+                  <img
+                      src={user}
+                      alt="user"
+                  />
+              }
+          />
+          <Select
+              label="disabled"
+              isClearable
+              size="36"
+              placeholder="Select..."
+              optionsData={optionsData}
+              selected={selected5}
+              // @ts-expected-error type
+              setSelected={setSelected5}
+              helperText="This is a hint text to help user."
+              tooltipText="This is a tooltip"
+              isShowTooltip
+              iconBefore={
+                  <img
+                      src={user}
+                      alt="user"
+                  />
+              }
+              isQuiet
+              disabled={true}
+          />
+      </div>
   );
 };
