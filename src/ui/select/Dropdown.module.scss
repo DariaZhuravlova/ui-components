@@ -1,10 +1,9 @@
-$color-scrollbar: #E4E4E7;
-$color-border: #D1D1D6;
+@import '../../styles/variables/global.scss';
 
 .dropdown {
   width: 100%;
-  background: white;
-  border: 1px solid $color-border;
+  background: $bg-primary;
+  border: 1px solid $border-primary;
   border-radius: 8px;
   padding: 4px 0;
   box-shadow: 0px 4px 12px #10182808;
@@ -14,7 +13,7 @@ $color-border: #D1D1D6;
   overflow-y: auto;
 
   scrollbar-width: thin;
-  scrollbar-color: $color-scrollbar transparent;
+  scrollbar-color: $bg-secondary_active transparent;
 
   // Chrome, Safari, Edge
   &::-webkit-scrollbar {
@@ -22,7 +21,7 @@ $color-border: #D1D1D6;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $color-scrollbar;
+    background-color: $bg-secondary_active;
     border-radius: 4px;
   }
 
@@ -32,5 +31,5 @@ $color-border: #D1D1D6;
 
   // Firefox
   scrollbar-width: thin;
-  scrollbar-color: $color-scrollbar transparent;
+  scrollbar-color: $bg-secondary_active transparent;
 }

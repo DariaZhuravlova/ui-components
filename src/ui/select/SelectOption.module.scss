@@ -1,4 +1,4 @@
-$color-background-selected: #FAFAFA;
+@import '../../styles/variables/global.scss';
 
 .size32 {
   height: 36px;
@@ -42,7 +42,7 @@ $color-background-selected: #FAFAFA;
   justify-content: space-between;
 
   &:hover {
-    background: $color-background-selected;
+    background: $bg-primary_active;
   }
 
 }

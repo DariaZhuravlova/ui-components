@@ -1,9 +1,11 @@
+@import '../../styles/variables/global.scss';
+
 $color-focus-outline: #2E90FA3D;
 $color-focus: #1570EF;
 $color-text-primary: #1570EF;
 
 $color-title-text: #3F3F46;
-$color-helper-text: #51525C;
+$text-tertiary: #51525C;
 $color-placeholder: #D1D1D6;
 $color-border: #D1D1D6;
 $color-disabled-bg: #FAFAFA;
@@ -55,7 +57,7 @@ $color-disabled-text: #E4E4E7;
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
-  color: $color-helper-text;
+  color: $text-tertiary;
 }
 
 .input {
