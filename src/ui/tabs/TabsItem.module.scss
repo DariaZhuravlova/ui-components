@@ -1,15 +1,5 @@
-$color-disabled: #D1D1D6;
-$color-active-underline: #1570EF;
-$color-background-active: #EFF8FF;
-$color-tab-label: #1A1A1E;
-$color-active-text: #175CD3;
-
-$color-badge-background: #FAFAFA;
-$color-badge-border: #E4E4E7;
-$color-badge-text: #3F3F46;
-$color-badge-background-selected: #EFF8FF;
-$color-badge-border-selected: #B2DDFF;
-$color-badge-text-selected: #175CD3;
+@import '../../styles/mixins/fonts/fonts.scss';
+@import '../../styles/variables/global.scss';
 
 
 .tabButton {
@@ -20,18 +10,18 @@ $color-badge-text-selected: #175CD3;
   cursor: pointer;
   position: relative;
   white-space: nowrap;
-  font-weight: 600;
-  color: $color-tab-label;
+  font-weight: 600; 
+  color: $text-primary;
   transition: all 0.2s ease;
 
 
   &.disabled {
     cursor: not-allowed;
-    color: $color-disabled;
+    color: $text-disabled;
   }
 
   &.active {
-    color: $color-active-text;
+    color: $text-brand-secondary;
   }
 
   &.active::after {
@@ -41,12 +31,12 @@ $color-badge-text-selected: #175CD3;
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: $color-active-underline; // blue line
+    background-color: $bg-brand-solid; 
     border-radius: 1px;
   }
 
   &.underlineFilled {
-    background-color: $color-background-active;
+    background-color: $bg-brand-primary;
   }
 }
 
@@ -78,9 +68,9 @@ $color-badge-text-selected: #175CD3;
 }
 
 .tabBadge {
-  background-color: $color-badge-background;
-  border: 1px solid $color-badge-border;
-  color: $color-badge-text;
+  background-color: $bg-secondary;
+  border: 1px solid $border-secondary;
+  color: $text-secondary;
   font-size: 12px;
   font-weight: 500;
   line-height: 20px;
@@ -90,8 +80,8 @@ $color-badge-text-selected: #175CD3;
   transition: all 0.2s ease;
 
   &.active {
-    background-color: $color-badge-background-selected;
-    color: $color-badge-text-selected;
-    border-color: $color-badge-border-selected;
+    background-color: $bg-brand-primary;
+    color: $text-brand-secondary;
+    border-color: $text-secondary_on-brand;
   }
 }

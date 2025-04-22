@@ -1,4 +1,4 @@
-$underline-color: #D1D1D6;
+@import '../../styles/variables/global.scss';
 
 .tabsHeaderWrapper {
   display: flex;
@@ -68,11 +68,15 @@ $underline-color: #D1D1D6;
   text-align: left;
   cursor: pointer;
   width: 100%;
+
+  &:hover {
+    background-color: $bg-secondary_hover; 
+  }
 }
 
 .underlineLine {
   height: 2px;
-  background: $underline-color;
+  background: $border-primary;
   width: 100%;
 }
 

@@ -1,11 +1,12 @@
-import { FC, useEffect, useRef, useState, useCallback, useLayoutEffect } from "react";
+import {FC, useRef, useState, useCallback} from "react";
 // components
 import {TabItem} from "./Tabs";
 import {TabsItem} from "./TabsItem";
 import {TabsScrollableWrapper} from "./TabsScrollableWrapper";
-import { Dropdown } from "../../ui/select/Dropdown";
+import {Dropdown} from "../../ui/select/Dropdown";
 // hooks
-import { useContainerResize } from "../../hooks/useContainerResize";
+import {useContainerWidth} from "../../hooks/useContainerWidth";
+import {useTabsVisibility} from "../../hooks/useTabsVisibility";
 // assets
 import dotsVertical from "../../assets/svg/icons/dotsVertical.svg";
 // styles
@@ -36,105 +37,35 @@ export const TabsItemList: FC<TabsItemListProps> = ({
     space = "hug",
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [hiddenTabs, setHiddenTabs] = useState<number[]>([]);
+    const dropdownRef = useRef<HTMLButtonElement>(null);
+    const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-    const [isReady, setIsReady] = useState(false);
-    const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const retryCountRef = useRef(0); // Для подсчета попыток пересчета
 
     const isDropdown = overflow === "dropdown";
 
-    const updateHiddenTabs = useCallback(() => {
-        if (!containerRef.current || !isDropdown) return;
-
-        const container = containerRef.current;
-        const children = Array.from(
-            container.querySelectorAll("._tabButton_1mmsw_1")
-        ) as HTMLElement[];
-
-        if (!children.length) {
-            console.log("No tabs found in container");
-            return;
-        }
-
-        // Если найдено меньше вкладок, чем ожидается, повторяем попытку
-        if (children.length !== items.length) {
-            console.log(`Mismatch: Found ${children.length} tabs, expected ${items.length}`);
-            if (retryCountRef.current < 5) {
-                // Ограничиваем количество попыток
-                retryCountRef.current += 1;
-                requestAnimationFrame(() => updateHiddenTabs());
-            }
-            return;
-        }
-
-        const containerWidth = container.clientWidth;
-        const dropdownButtonWidth = 40;
-        const availableWidth = containerWidth - dropdownButtonWidth;
-
-        let totalWidth = 0;
-        const hidden: number[] = [];
-
-        children.forEach((child, index) => {
-            const childWidth = child.clientWidth;
-            const nextTotalWidth = totalWidth + childWidth;
-
-            if (totalWidth >= availableWidth || nextTotalWidth > availableWidth) {
-                hidden.push(index);
-            }
-
-            totalWidth = nextTotalWidth;
-        });
-
-        console.log(
-            "Container width:",
-            containerWidth,
-            "Available width:",
-            availableWidth,
-            "Total width:",
-            totalWidth,
-            "Number of tabs:",
-            children.length,
-            "Hidden tabs:",
-            hidden
-        );
-
-        setHiddenTabs((prevHiddenTabs) => {
-            if (containerWidth === 0 || totalWidth === 0) {
-                return prevHiddenTabs;
-            }
-            return hidden;
-        });
-
-        setIsReady(true);
-        retryCountRef.current = 0; // Сбрасываем счетчик попыток
-    }, [isDropdown, items.length]);
-
-    useContainerResize(containerRef, () => {
-        if (resizeTimeoutRef.current) {
-            clearTimeout(resizeTimeoutRef.current);
-        }
-        resizeTimeoutRef.current = setTimeout(() => {
-            updateHiddenTabs();
-        }, 100);
+    useContainerWidth(containerRef); //триггерит ререндер при ресайзе
+    const {hiddenTabs} = useTabsVisibility({
+        items,
+        containerRef,
+        tabRefs,
+        isDropdown,
     });
 
-    useLayoutEffect(() => {
-        setIsReady(false);
-        requestAnimationFrame(() => {
-            updateHiddenTabs();
-        });
+    const dropdownButtonWidth = dropdownRef.current?.offsetWidth || 40;
+    const tabsContainerStyle = isDropdown
+        ? {maxWidth: `calc(100% - ${dropdownButtonWidth}px)`}
+        : {};
 
-        return () => {
-            if (resizeTimeoutRef.current) {
-                clearTimeout(resizeTimeoutRef.current);
-            }
-        };
-    }, [items, selectedIndex, updateHiddenTabs]);
+    const setTabRef = useCallback(
+        (index: number) => (el: HTMLButtonElement | null) => {
+            tabRefs.current[index] = el;
+        },
+        []
+    );
 
     const renderTabs = useCallback(
-        (tabs: {item: TabItem; index: number}[]) => {
-            return tabs.map(({item, index}) => (
+        (tabs: {item: TabItem; index: number}[]) =>
+            tabs.map(({item, index}) => (
                 <TabsItem
                     key={index}
                     label={item.label}
@@ -145,10 +76,10 @@ export const TabsItemList: FC<TabsItemListProps> = ({
                     size={size}
                     onClick={() => onSelect(index)}
                     className={style.tabButton}
+                    ref={setTabRef(index)}
                 />
-            ));
-        },
-        [selectedIndex, disabled, variant, size, onSelect]
+            )),
+        [selectedIndex, disabled, variant, size, onSelect, setTabRef]
     );
 
     const visibleItems = isDropdown
@@ -163,17 +94,11 @@ export const TabsItemList: FC<TabsItemListProps> = ({
               .filter(({index}) => hiddenTabs.includes(index))
         : [];
 
-    useEffect(() => {
-        console.log("Dropdown items:", dropdownItems);
-    }, [dropdownItems]);
-
     const wrapperClasses = clsx(style.tabsHeaderWrapper, {
         [style.withPadding]: withPadding,
         [style.spaceStretch]: space === "stretch",
         [style.spaceHug]: space === "hug",
     });
-
-    const tabsContainerStyle = isDropdown ? {maxWidth: `calc(100% - 40px)`} : {};
 
     return (
         <nav className={wrapperClasses}>
@@ -182,54 +107,48 @@ export const TabsItemList: FC<TabsItemListProps> = ({
                     className={style.tabsList}
                     ref={containerRef}
                 >
-                    {isReady ? (
-                        <>
-                            <div
-                                className={style.tabsContainer}
-                                style={tabsContainerStyle}
+                    <div
+                        className={style.tabsContainer}
+                        style={tabsContainerStyle}
+                    >
+                        {renderTabs(visibleItems)}
+                    </div>
+                    {dropdownItems.length > 0 && (
+                        <div className={style.dropdownWrapper}>
+                            <button
+                                ref={dropdownRef}
+                                className={clsx(style.dropdownToggle, {
+                                    [style.active]: isDropdownOpen,
+                                })}
+                                onClick={() => setDropdownOpen(!isDropdownOpen)}
                             >
-                                {renderTabs(visibleItems)}
-                            </div>
-                            {dropdownItems.length > 0 && (
-                                <div className={style.dropdownWrapper}>
-                                    <button
-                                        className={clsx(style.dropdownToggle, {
-                                            [style.active]: isDropdownOpen,
-                                        })}
-                                        onClick={() => setDropdownOpen(!isDropdownOpen)}
-                                    >
-                                        <img
-                                            src={dotsVertical}
-                                            alt="More tabs"
-                                        />
-                                    </button>
-                                    <div className={style.dropdownContainer}>
-                                        <Dropdown isOpen={isDropdownOpen}>
-                                            <div className={style.dropdownItemList}>
-                                                {dropdownItems.map(({item, index}) => (
-                                                    <button
-                                                        key={index}
-                                                        className={style.dropdownItem}
-                                                        onClick={() => {
-                                                            onSelect(index);
-                                                            setDropdownOpen(false);
-                                                        }}
-                                                    >
-                                                        {item.label}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </Dropdown>
+                                <img
+                                    src={dotsVertical}
+                                    alt="More tabs"
+                                />
+                            </button>
+                            <div
+                                className={clsx(style.dropdownContainer, {
+                                    [style.open]: isDropdownOpen,
+                                })}
+                            >
+                                <Dropdown isOpen={isDropdownOpen}>
+                                    <div className={style.dropdownItemList}>
+                                        {dropdownItems.map(({item, index}) => (
+                                            <button
+                                                key={index}
+                                                className={style.dropdownItem}
+                                                onClick={() => {
+                                                    onSelect(index);
+                                                    setDropdownOpen(false);
+                                                }}
+                                            >
+                                                {item.label}
+                                            </button>
+                                        ))}
                                     </div>
-                                </div>
-                            )}
-                        </>
-                    ) : (
-                        <div
-                            className={style.tabsContainer}
-                            style={{...tabsContainerStyle, visibility: "hidden"}}
-                        >
-                            {renderTabs(items.map((item, index) => ({item, index})))}
+                                </Dropdown>
+                            </div>
                         </div>
                     )}
                 </div>

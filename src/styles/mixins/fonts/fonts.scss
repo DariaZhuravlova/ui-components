@@ -1,0 +1,94 @@
+@mixin typography($font-size, $line-height, $font-weight: 400, $letter-spacing: null) {
+  font-family: 'Inter', sans-serif;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+
+  @if $letter-spacing !=null {
+    letter-spacing: $letter-spacing;
+  }
+}
+
+@mixin display72($font-weight: 400) {
+  @include typography(4.5rem, 5.625rem, $font-weight, -0.02em);
+}
+
+@mixin display64($font-weight: 400) {
+  @include typography(4rem, 4.5rem, $font-weight, -0.02em);
+}
+
+@mixin display60($font-weight: 400) {
+  @include typography(3.75rem, 4.5rem, $font-weight, -0.02em);
+}
+
+@mixin display56($font-weight: 400) {
+  @include typography(3.5rem, 3.75rem, $font-weight, -0.02em);
+}
+
+@mixin display48($font-weight: 400) {
+  @include typography(3rem, 3.75rem, $font-weight, -0.02em);
+}
+
+@mixin display40($font-weight: 400) {
+  @include typography(2.5rem, 3.25rem, $font-weight, -0.02em);
+}
+
+@mixin display36($font-weight: 400) {
+  @include typography(2.25rem, 2.75rem, $font-weight, -0.02em);
+}
+
+@mixin display32($font-weight: 400) {
+  @include typography(2rem, 2.5rem, $font-weight, -0.02em);
+}
+
+@mixin display30($font-weight: 400) {
+  @include typography(1.875rem, 2.375rem, $font-weight);
+}
+
+@mixin display28($font-weight: 400) {
+  @include typography(1.75rem, 2.25rem, $font-weight);
+}
+
+@mixin display26($font-weight: 400) {
+  @include typography(1.525rem, 2rem, $font-weight);
+}
+
+@mixin display24($font-weight: 400) {
+  @include typography(1.5rem, 2rem, $font-weight);
+}
+
+@mixin display22($font-weight: 400) {
+  @include typography(1.375rem, 1.75rem, $font-weight);
+}
+
+@mixin text20($font-weight: 400) {
+  @include typography(1.25rem, 1.875rem, $font-weight);
+}
+
+@mixin text18($font-weight: 400) {
+  @include typography(1.125rem, 1.75rem, $font-weight);
+}
+
+@mixin text16($font-weight: 400) {
+  @include typography(1rem, 1.5rem, $font-weight);
+}
+
+@mixin text14($font-weight: 400) {
+  @include typography(0.875rem, 1.25rem, $font-weight);
+}
+
+@mixin text13($font-weight: 400) {
+  @include typography(0.75rem, 1.125rem, $font-weight);
+}
+
+@mixin text12($font-weight: 400) {
+  @include typography(0.75rem, 1.125rem, $font-weight);
+}
+
+@mixin text10($font-weight: 400) {
+  @include typography(0.625rem, 1rem, $font-weight);
+}
+
+@mixin text8($font-weight: 400) {
+  @include typography(0.5rem, 0.75rem, $font-weight);
+}
