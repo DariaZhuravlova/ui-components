@@ -62,7 +62,7 @@
 
   &:focus-within {
     border-color: $border-brand;
-    outline: 4px solid $color-input-focus-outline;
+    outline: 4px solid $color-focus-outline;
   }
 
   .inputWrapper.labelRight {

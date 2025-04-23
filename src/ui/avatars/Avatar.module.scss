@@ -1,11 +1,4 @@
-
-
-$color-bg-avatar-placeholder: #F2F2F2;
-$color-border-avatar-placeholder: #D1D1D1;
-$color-text-avatar-placeholder: #70707B;
-
-$color-indicator: #17B26A;
-$color-focus-outline-avatar: #2E90FA3D;
+@import '../../styles/variables/global.scss';
 
 .avatarWrapper {
   width: 40px;
@@ -13,16 +6,15 @@ $color-focus-outline-avatar: #2E90FA3D;
   display: flex;
   align-items: center;
   position: relative;
-  font-family: "Inter", sans-serif;
   border-radius: 50%;
 
   &:focus-visible,
   &:focus-within {
-    outline: 4px solid $color-focus-outline-avatar;
+    outline: 4px solid $color-focus-outline;
   }
 
   &.noFocus {
-      outline: none;
+    outline: none;
   }
 
   &.size16 {
@@ -172,7 +164,7 @@ $color-focus-outline-avatar: #2E90FA3D;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  outline: 1.5px solid white;
+  outline: 1.5px solid $text-white;
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -184,10 +176,10 @@ $color-focus-outline-avatar: #2E90FA3D;
   height: 100%;
   object-fit: fill;
   border-radius: 50%;
-  background-color: $color-bg-avatar-placeholder;
-  border: 1px solid $color-border-avatar-placeholder;
+  background-color: $bg-secondary_hover;
+  border: 1px solid $text-disabled;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-text-avatar-placeholder;
+  color: $text-secondary_hover;
 }

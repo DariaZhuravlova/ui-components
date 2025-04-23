@@ -1,6 +1,4 @@
-$color-tooltip-background: #131316;
-$color-tooltip-text: #FFFFFF;
-
+@import '../../styles/variables/global.scss';
 
 .tooltipWrapper {
   position: relative;
@@ -26,8 +24,8 @@ $color-tooltip-text: #FFFFFF;
 }
 
 .tooltip {
-  background: $color-tooltip-background;
-  color: $color-tooltip-text;
+  background: $bg-overlay;
+  color: $text-white;
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 12px;
@@ -44,7 +42,7 @@ $color-tooltip-text: #FFFFFF;
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid $color-tooltip-background;
+  border-top: 6px solid $bg-overlay;
   margin-top: -1px;
 }
 

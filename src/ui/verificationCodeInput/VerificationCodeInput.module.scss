@@ -1,16 +1,5 @@
 @import '../../styles/variables/global.scss';
 
-$color-focus-outline: #2E90FA3D;
-$color-focus: #1570EF;
-$color-text-primary: #1570EF;
-
-$color-title-text: #3F3F46;
-$text-tertiary: #51525C;
-$color-placeholder: #D1D1D6;
-$color-border: #D1D1D6;
-$color-disabled-bg: #FAFAFA;
-$color-disabled-text: #E4E4E7;
-
 .inputWrapper {
   display: flex;
   align-items: center;
@@ -31,7 +20,7 @@ $color-disabled-text: #E4E4E7;
   line-height: 60px;
   font-weight: 500;
   text-align: center;
-  color: $color-border;
+  color: $border-disabled;
   margin-left: 12px;
   width: 28px;
   display: inline-block;
@@ -43,14 +32,13 @@ $color-disabled-text: #E4E4E7;
   align-items: flex-start;
   gap: 6px;
   justify-content: center;
-  font-family: "Inter", sans-serif;
 }
 
 .title {
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
-  color: $color-title-text;
+  color: $text-secondary;
 }
 
 .helperText {
@@ -62,15 +50,15 @@ $color-disabled-text: #E4E4E7;
 
 .input {
   text-align: center;
-  border: 1px solid $color-border;
+  border: 1px solid $border-disabled;
   font-weight: 500;
   transition: border-color 0.2s ease-in-out;
-  color: $color-text-primary;
+  color: $text-brand-tertiary;
   align-items: center;
 
   &:disabled {
-    background-color: $color-disabled-bg;
-    color: $color-disabled-text;
+    background-color: $bg-secondary;
+    color: $bg-secondary_active;
     cursor: not-allowed;
   }
 
@@ -80,20 +68,20 @@ $color-disabled-text: #E4E4E7;
 }
 
 .input::placeholder {
-  color: $color-placeholder;
+  color: $text-disabled;
 }
 
 .input:hover {
-  border-color: $color-focus;
+  border-color: $text-brand-tertiary;
 }
 
 .input:focus {
-  border-color: $color-focus;
+  border-color: $text-brand-tertiary;
   outline: 2px solid $color-focus-outline;
 }
 
 .input.filled {
-  border-color: $color-focus;
+  border-color: $text-brand-tertiary;
 }
 
 .small .input {
