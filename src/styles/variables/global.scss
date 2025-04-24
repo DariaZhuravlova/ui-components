@@ -67,26 +67,29 @@ $bg-success-primary: #ECFDF3; //success-50
 $bg-success-secondary: #DCFAE6; //success-100
 $bg-success-solid: #079455; //success-600
 
-////my variables
-$color-focus-outline: #2E90FA3D;
-$color-input-error-outline: #F044383D;
+// utility colors
+$utility-success-300: #75E0A7; //success-300
+$utility-success-500: #17B26A; //success-500
+$utility-success-700: #067647; //success-700
+$utility-success-800: #085D3A; //success-800
+$utility-success-900: #074D31; //success-900
 
-$color-accent: #2563eb;
+
+$utility-error-700: #B42318; //error-700
+$utility-error-800: #912018; //error-800
+
+$utility-warning-300: #FEC84B; //warning-300
+$utility-warning-700: #B54708; //warning-700
+$utility-warning-800: #93370D; //warning-800
+
+// my variables
+$color-focus-outline: #2E90FA3D;
+$color-danger-outline: #F044383D;
+$color-success-outline: #07945533;
+$color-warning-outline: #F7900933;
 $color-accent-outline: #2e90fa26;
 $bg-primary-solid-outline: #26272B33;
 $bg-secondary_hover-outline: #98A2B333;
 
-$color-success-hover: #067647;
-$color-success-active: #085D3A;
-$color-success-outline: #07945533;
 
-$color-danger-hover: #B42318;
-$color-danger-active: #912018;
-$color-danger-outline: #F044383D;
 
-$text-warning-primary: #DC6803;
-$color-warning-hover: #B54708;
-$color-warning-active: #93370D;
-$color-warning-outline: #F7900933;
-
-$color-indicator: #17B26A;

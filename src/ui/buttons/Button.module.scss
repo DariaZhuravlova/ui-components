@@ -187,16 +187,16 @@
   background-color: $bg-success-solid;
 
   &:hover {
-    background-color: $color-success-hover;
+    background-color: $utility-success-700;
   }
 
   &:active {
-    background-color: $color-success-active;
+    background-color: $utility-success-800;
   }
 
   &:focus,
   &:focus-visible {
-    background-color: $color-success-hover;
+    background-color: $utility-success-700;
     outline: 4px solid $color-success-outline;
   }
 
@@ -207,16 +207,16 @@
   background-color: $bg-error-solid;
 
   &:hover {
-    background-color: $color-danger-hover;
+    background-color: $utility-error-700;
   }
 
   &:active {
-    background-color: $color-danger-active;
+    background-color: $utility-error-800;
   }
 
   &:focus,
   &:focus-visible {
-    background-color: $color-danger-hover;
+    background-color: $utility-error-700;
     outline: 4px solid $color-danger-outline;
   }
 
@@ -227,16 +227,16 @@
   background-color: $bg-warning-solid;
 
   &:hover {
-    background-color: $color-warning-hover;
+    background-color: $utility-warning-700;
   }
 
   &:active {
-    background-color: $color-warning-active;
+    background-color: $utility-warning-800;
   }
 
   &:focus,
   &:focus-visible {
-    background-color: $color-warning-hover;
+    background-color: $utility-warning-700;
     outline: 4px solid $color-warning-outline;
   }
 
@@ -325,22 +325,22 @@
 .outlineSuccess {
   color: $text-success-primary;
   background-color: $bg-primary;
-  border: 1px solid #75E0A7;
+  border: 1px solid $utility-success-300;
 
   &:hover {
     background-color: $bg-success-primary;
-    color: $color-success-hover;
+    color: $utility-success-700;
   }
 
   &:active {
     background-color: $bg-success-secondary;
-    color: $color-success-active;
+    color: $utility-success-800;
   }
 
   &:focus,
   &:focus-visible {
     background-color: $bg-success-primary;
-    color: $color-success-hover;
+    color: $utility-success-700;
     outline: 4px solid $color-success-outline;
   }
 
@@ -357,19 +357,19 @@
 
   &:hover {
     background-color: $bg-error-primary;
-    color: $color-danger-hover;
+    color: $utility-error-700;
   }
 
   &:active {
     background-color: $bg-error-secondary;
-    color: $color-danger-active;
+    color: $utility-error-800;
   }
 
   &:focus,
   &:focus-visible {
     background-color: $bg-error-primary;
     outline: 4px solid $color-danger-outline;
-    color: $color-danger-hover;
+    color: $utility-error-700;
   }
 
   &:disabled {
@@ -381,23 +381,23 @@
 .outlineWarning {
   color: $text-warning-primary;
   background-color: $bg-primary;
-  border: 1px solid #FEC84B;
+  border: 1px solid $utility-warning-300;
 
   &:hover {
     background-color: $bg-warning-primary;
-    color: $color-warning-hover;
+    color: $utility-warning-700;
   }
 
   &:active {
     background-color: $bg-warning-secondary;
-    color: $color-warning-active;
+    color: $utility-warning-800;
   }
 
   &:focus,
   &:focus-visible {
     background-color: $bg-warning-primary;
     outline: 4px solid $color-danger-outline;
-    color: $color-warning-hover;
+    color: $utility-warning-700;
   }
 
   &:disabled {
@@ -478,70 +478,70 @@
 }
 
 .ghostSuccess {
-  color: #074D31;
+  color: $utility-success-900;
   background-color: transparent;
 
   &:hover {
     background-color: $bg-success-primary;
-    color: $color-success-hover;
+    color: $utility-success-700;
   }
 
   &:active {
     background-color: $bg-success-secondary;
-    color: $color-success-hover;
+    color: $utility-success-700;
   }
 
   &:focus,
   &:focus-visible {
     background-color: $bg-success-primary;
     outline: 4px solid $color-success-outline;
-    color: $color-success-hover;
+    color: $utility-success-700;
   }
 
 }
 
 .ghostDanger {
-  color: $color-danger-hover;
+  color: $utility-error-700;
   background-color: transparent;
 
   &:hover {
     background-color: $bg-error-primary;
-    color: $color-danger-active;
+    color: $utility-error-800;
   }
 
   &:active {
     background-color: $bg-error-primary;
-    color: $color-danger-active;
+    color: $utility-error-800;
   }
 
   &:focus,
   &:focus-visible {
     background-color: $bg-error-primary;
     outline: 4px solid $color-danger-outline;
-    color: $color-danger-active;
+    color: $utility-error-800;
   }
 
 }
 
 .ghostWarning {
-  color: $color-warning-hover;
+  color: $utility-warning-700;
   background-color: transparent;
 
   &:hover {
     background-color: $bg-warning-primary;
-    color: $color-warning-active;
+    color: $utility-warning-800;
   }
 
   &:active {
     background-color: $bg-warning-primary;
-    color: $color-warning-active;
+    color: $utility-warning-800;
   }
 
   &:focus,
   &:focus-visible {
     background-color: $bg-warning-primary;
     outline: 4px solid $color-warning-outline;
-    color: $color-warning-active;
+    color: $utility-warning-800;
   }
 
 }
@@ -613,17 +613,17 @@
   background-color: transparent;
 
   &:hover {
-    color: $color-success-hover;
+    color: $utility-success-700;
   }
 
   &:active {
-    color: $color-success-active;
+    color: $utility-success-800;
   }
 
   &:focus,
   &:focus-visible {
     outline: 4px solid $color-success-outline;
-    color: $color-success-hover;
+    color: $utility-success-700;
   }
 
 }
@@ -633,17 +633,17 @@
   background-color: transparent;
 
   &:hover {
-    color: $color-danger-hover;
+    color: $utility-error-700;
   }
 
   &:active {
-    color: $color-danger-active;
+    color: $utility-error-800;
   }
 
   &:focus,
   &:focus-visible {
     outline: 4px solid $color-danger-outline;
-    color: $color-danger-hover;
+    color: $utility-error-700;
   }
 
 }
@@ -653,17 +653,17 @@
   background-color: transparent;
 
   &:hover {
-    color: $color-warning-hover;
+    color: $utility-warning-700;
   }
 
   &:active {
-    color: $color-warning-active;
+    color: $utility-warning-800;
   }
 
   &:focus,
   &:focus-visible {
     outline: 4px solid $color-warning-outline;
-    color: $color-warning-hover;
+    color: $utility-warning-700;
   }
 
 }

@@ -165,7 +165,7 @@
       border-color: $border-error;
 
       &:focus-within {
-        outline: 4px solid $color-input-error-outline;
+        outline: 4px solid $color-danger-outline;
       }
     }
 
