@@ -1,5 +1,4 @@
-@import '../../styles/mixins/fonts/fonts.scss';
-@import '../../styles/variables/global.scss';
+@use '../../styles/variables/global' as *;
 
 
 .tabButton {
