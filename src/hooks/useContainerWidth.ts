@@ -6,14 +6,20 @@ export const useContainerWidth = (ref: RefObject<HTMLElement | null>) => {
     useEffect(() => {
         const updateWidth = () => {
             if (ref.current) {
-                const width = ref.current.getBoundingClientRect().width;
-                setWidth(width);
+                setWidth(ref.current.clientWidth);
             }
         };
-        updateWidth();
-        window.addEventListener("resize", updateWidth);
 
-        return () => window.removeEventListener("resize", updateWidth);
+        updateWidth(); // Инициализируем сразу
+
+        const handleResize = () => {
+            // Используем requestAnimationFrame для оптимизации производительности
+            requestAnimationFrame(updateWidth);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
     }, [ref]);
 
     return width;

@@ -1,9 +1,9 @@
 import {useState, useCallback, useEffect, RefObject} from "react";
 import {useContainerWidth} from "./useContainerWidth";
-import {TabItem} from "../ui/tabs/Tabs";
+import {Tab} from "../ui/tabs/Tabs";
 
 interface UseTabsVisibilityProps {
-    items: TabItem[];
+    items: Tab[];
     containerRef: RefObject<HTMLDivElement | null>;
     tabRefs: RefObject<(HTMLButtonElement | null)[]>;
     isDropdown: boolean;
@@ -30,7 +30,7 @@ export const useTabsVisibility = ({
 
         // Проверяем, что все табы отрендерены
         if (tabRefs.current.length !== items.length) {
-            requestAnimationFrame(() => updateHiddenTabs());
+            setTimeout(updateHiddenTabs, 0);
             return;
         }
 
@@ -50,14 +50,23 @@ export const useTabsVisibility = ({
             }
         });
 
-        setHiddenTabs(hidden);
-    }, [isDropdown, containerWidth, containerRef, tabRefs, items.length]);
+        // Обновляем состояние только если список скрытых вкладок изменился
+        if (!arraysEqual(hidden, hiddenTabs)) {
+            setHiddenTabs(hidden);
+        }
+    }, [isDropdown, containerWidth, tabRefs, items.length]);
 
     useEffect(() => {
         updateHiddenTabs();
-    }, [updateHiddenTabs, items]);
+    }, [updateHiddenTabs, items]); // Зависимость только от updateHiddenTabs и items
 
     return {
         hiddenTabs,
     };
 };
+
+// Утилита для сравнения массивов
+function arraysEqual(a: number[], b: number[]): boolean {
+    return a.length === b.length && a.every((value, index) => value === b[index]);
+}
+

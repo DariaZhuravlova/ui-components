@@ -1,8 +1,8 @@
 import {forwardRef} from "react";
 import clsx from "clsx";
-import style from "./TabsItem.module.scss"; 
+import style from "./TabItem.module.scss";
 
-interface TabsItemProps {
+interface TabItemProps {
     label: string;
     badgeCount?: number;
     isActive?: boolean;
@@ -13,8 +13,8 @@ interface TabsItemProps {
     className?: string;
 }
 
-export const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(
-    ({label, badgeCount, isActive, disabled, variant, size, onClick, className}, ref) => {
+export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
+    ({label, badgeCount, isActive, disabled, variant, size = "36", onClick, className}, ref) => {
         return (
             <button
                 ref={ref}
@@ -42,4 +42,4 @@ export const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(
     }
 );
 
-TabsItem.displayName = "TabsItem";
+TabItem.displayName = "TabItem";

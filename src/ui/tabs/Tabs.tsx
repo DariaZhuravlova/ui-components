@@ -1,22 +1,19 @@
 import {FC} from "react";
-import clsx from "clsx";
+import {TabsItemList} from "./TabsItemList"; 
 import {tabsContent} from "../../mock/tabsContent";
-import {TabsItemList} from "./TabsItemList";
 
-import style from "./Tabs.module.scss";
-
-export interface TabItem {
+export interface Tab {
     label: string;
     badgeCount?: number;
 }
 
-export interface TabsProps {
-    items: TabItem[];
+interface TabsProps {
+    items: Tab[];
     selectedIndex: number;
     onSelect: (index: number) => void;
+    overflow?: "scrollable" | "arrows" | "dropdown";
     variant?: "underline" | "underlineFilled";
     size?: "32" | "36" | "40";
-    overflow?: "scrollable" | "arrows" | "dropdown";
     withPadding?: boolean;
     space?: "hug" | "stretch";
 }
@@ -25,28 +22,28 @@ export const Tabs: FC<TabsProps> = ({
     items,
     selectedIndex,
     onSelect,
+    overflow = "scrollable",
     variant = "underline",
     size = "36",
-    overflow = "scrollable",
     withPadding = false,
+    space = "hug",
 }) => {
-  
+    const selectedTabLabel = items[selectedIndex]?.label;
+    const selectedTabContent = selectedTabLabel ? tabsContent[selectedTabLabel] : null;
 
     return (
-        <div className={clsx(style.tabs, {})}>
+        <>
             <TabsItemList
                 items={items}
                 selectedIndex={selectedIndex}
                 onSelect={onSelect}
+                overflow={overflow}
                 variant={variant}
                 size={size}
-                overflow={overflow}
                 withPadding={withPadding}
-                space="stretch"
+                space={space}
             />
-            <div style={{padding: "20px"}}>
-                {tabsContent[items[selectedIndex].label] || <p>Content not found for this tab.</p>}
-            </div>
-        </div>
+            <div>{selectedTabContent}</div>
+        </>
     );
 };

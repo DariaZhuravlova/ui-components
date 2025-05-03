@@ -19,61 +19,6 @@
   white-space: nowrap; // Гарантируем, что вкладки не переносятся
 }
 
-.dropdownWrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.dropdownToggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  img {
-    width: 16px;
-    height: 16px;
-    transition: filter 0.2s ease;
-  }
-
-  &.active {
-    img {
-      filter: brightness(0) saturate(100%) invert(27%) sepia(94%) saturate(7497%) hue-rotate(209deg) brightness(99%) contrast(101%);
-    }
-  }
-}
-
-.dropdownContainer {
-  min-width: 160px;
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0px;
-  z-index: 100;
-}
-
-.dropdownItemList {
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdownItem {
-  padding: 8px 16px;
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  width: 100%;
-
-  &:hover {
-    background-color: $bg-secondary_hover; 
-  }
-}
-
 .underlineLine {
   height: 2px;
   background: $border-primary;

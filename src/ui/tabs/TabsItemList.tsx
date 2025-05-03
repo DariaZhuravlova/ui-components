@@ -1,20 +1,21 @@
-import {FC, useRef, useState, useCallback} from "react";
-// components
-import {TabItem} from "./Tabs";
-import {TabsItem} from "./TabsItem";
+import { FC, useRef, useState, useCallback, RefObject } from "react";
+//components
+import {TabItem} from "./TabItem"; 
 import {TabsScrollableWrapper} from "./TabsScrollableWrapper";
-import {Dropdown} from "../../ui/select/Dropdown";
-// hooks
+import {TabsArrowsWrapper} from "./TabsArrowsWrapper";
+import { TabsDropdownWrapper } from "./TabsDropdownWrapper"; 
+//hooks
 import {useContainerWidth} from "../../hooks/useContainerWidth";
-import {useTabsVisibility} from "../../hooks/useTabsVisibility";
-// assets
-import dotsVertical from "../../assets/svg/icons/dotsVertical.svg";
-// styles
+import { useTabsVisibility } from "../../hooks/useTabsVisibility";
+//types
+import type {Tab} from "./Tabs";
+//styles
 import style from "./TabsItemList.module.scss";
 import clsx from "clsx";
 
+
 interface TabsItemListProps {
-    items: TabItem[];
+    items: Tab[];
     selectedIndex: number;
     onSelect: (index: number) => void;
     disabled?: boolean;
@@ -37,13 +38,14 @@ export const TabsItemList: FC<TabsItemListProps> = ({
     space = "hug",
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const dropdownRef = useRef<HTMLButtonElement>(null);
+    const dropdownRef: RefObject<HTMLButtonElement | null> = useRef(null);
     const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
     const [isDropdownOpen, setDropdownOpen] = useState(false);
 
     const isDropdown = overflow === "dropdown";
 
-    useContainerWidth(containerRef); //триггерит ререндер при ресайзе
+    useContainerWidth(containerRef);
     const {hiddenTabs} = useTabsVisibility({
         items,
         containerRef,
@@ -64,9 +66,9 @@ export const TabsItemList: FC<TabsItemListProps> = ({
     );
 
     const renderTabs = useCallback(
-        (tabs: {item: TabItem; index: number}[]) =>
+        (tabs: {item: Tab; index: number}[]) =>
             tabs.map(({item, index}) => (
-                <TabsItem
+                <TabItem
                     key={index}
                     label={item.label}
                     badgeCount={item.badgeCount}
@@ -102,7 +104,7 @@ export const TabsItemList: FC<TabsItemListProps> = ({
 
     return (
         <nav className={wrapperClasses}>
-            {isDropdown ? (
+            {overflow === "dropdown" ? (
                 <div
                     className={style.tabsList}
                     ref={containerRef}
@@ -113,49 +115,22 @@ export const TabsItemList: FC<TabsItemListProps> = ({
                     >
                         {renderTabs(visibleItems)}
                     </div>
-                    {dropdownItems.length > 0 && (
-                        <div className={style.dropdownWrapper}>
-                            <button
-                                ref={dropdownRef}
-                                className={clsx(style.dropdownToggle, {
-                                    [style.active]: isDropdownOpen,
-                                })}
-                                onClick={() => setDropdownOpen(!isDropdownOpen)}
-                            >
-                                <img
-                                    src={dotsVertical}
-                                    alt="More tabs"
-                                />
-                            </button>
-                            <div
-                                className={clsx(style.dropdownContainer, {
-                                    [style.open]: isDropdownOpen,
-                                })}
-                            >
-                                <Dropdown isOpen={isDropdownOpen}>
-                                    <div className={style.dropdownItemList}>
-                                        {dropdownItems.map(({item, index}) => (
-                                            <button
-                                                key={index}
-                                                className={style.dropdownItem}
-                                                onClick={() => {
-                                                    onSelect(index);
-                                                    setDropdownOpen(false);
-                                                }}
-                                            >
-                                                {item.label}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </Dropdown>
-                            </div>
-                        </div>
-                    )}
+                    <TabsDropdownWrapper
+                        hiddenTabs={dropdownItems}
+                        isOpen={isDropdownOpen}
+                        toggleOpen={() => setDropdownOpen((prev) => !prev)}
+                        onSelect={onSelect}
+                        dropdownRef={dropdownRef}
+                    />
                 </div>
+            ) : overflow === "arrows" ? (
+                <TabsArrowsWrapper scrollRef={containerRef}>
+                    {renderTabs(visibleItems)}
+                </TabsArrowsWrapper>
             ) : (
                 <TabsScrollableWrapper
                     overflow={overflow}
-                    scrollRef={containerRef as React.RefObject<HTMLDivElement>}
+                    scrollRef={containerRef}
                 >
                     {renderTabs(visibleItems)}
                 </TabsScrollableWrapper>
